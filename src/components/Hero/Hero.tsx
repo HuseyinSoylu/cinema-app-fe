@@ -1,24 +1,24 @@
 import React from "react";
 import { Carousel } from "antd";
-import img1 from "../../images/1.jpg";
-import img2 from "../../images/2.jpg";
-import img3 from "../../images/3.jpg";
+import avatar from "../../assets/images/HomeHero/avatar.jpg";
+import oppenheimer from "../../assets/images/HomeHero/oppenheimer.jpeg";
+import stillwater from "../../assets/images/HomeHero/stillwater.jpg";
 
 const Hero: React.FC = () => (
   <Carousel autoplay>
     <div>
-      <h3 className="h-80 text-white leading-40 text-center bg-black">
-        <img src={img1} alt="" />
+      <h3 className="h-120 text-white leading-40 text-center bg-black">
+        <img src={avatar} alt="" />
       </h3>
     </div>
     <div>
-      <h3 className="h-80 text-white leading-40 text-center bg-black">
-        <img src={img2} alt="" />
+      <h3 className="h-120 text-white leading-40 text-center bg-black">
+        <img src={oppenheimer} alt="" />
       </h3>
     </div>
     <div>
-      <h3 className="h-80 text-white leading-40 text-center bg-black">
-        <img src={img3} alt="" />
+      <h3 className="h-120 text-white leading-40 text-center bg-black">
+        <img src={stillwater} alt="" />
       </h3>
     </div>
   </Carousel>
