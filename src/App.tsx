@@ -75,9 +75,6 @@ function App() {
       <Layout>
         <Hero />
         <Categories />
-
-        {/* <Slider images={images} /> */}
-        <FilmMenu films={films} />
         <Carousel />
         <h1 className="text-center align-middle">Test</h1>
       </Layout>

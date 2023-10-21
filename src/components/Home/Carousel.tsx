@@ -1,55 +1,63 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from "react-router-dom";
 
-function Carousel() {
+const Carousel = () => {
+  const [images, setImages] = useState([]);
+  const [selectedItemId, setSelectedItemId] = useState(null);
+  const navigate = useNavigate();
+
+  // Dummy veri
+  const dummyImages = [
+    { id: 1, name: "Resim 1", url: "https://via.placeholder.com/150" },
+    { id: 2, name: "Resim 2", url: "https://via.placeholder.com/150" },
+    { id: 3, name: "Resim 3", url: "https://via.placeholder.com/150" },
+    { id: 4, name: "Resim 4", url: "https://via.placeholder.com/150" },
+    { id: 5, name: "Resim 5", url: "https://via.placeholder.com/150" },
+    { id: 6, name: "Resim 6", url: "https://via.placeholder.com/150" },
+  ];
+
+  useEffect(() => {
+    setImages(dummyImages);
+  }, []);
+
+  const handleItemClick = (itemId) => {
+    setSelectedItemId(itemId);
+    navigate(`/film/${itemId}`);
+    console.log(`Item id: ${itemId}`);
+  };
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+  };
+
   return (
-    <>
-      <div className="carousel carousel-center space-x-10 items-center">
-        <div className="carousel-item">
-          <img
-            src="http://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg"
-            alt="Burger"
-          />
-          <h1 className="">Avatar</h1>
-        </div>
-        {/* <div className="carousel-item">
-          <img
-            src="http://ia.media-imdb.com/images/M/MV5BMTU4NzMyNDk1OV5BMl5BanBnXkFtZTcwOTEwMzU1MQ@@._V1_SX300.jpg"
-            alt="Burger"
-          />
-        </div> */}
-        <div className="carousel-item">
-          <img
-            src="http://ia.media-imdb.com/images/M/MV5BMjAzNTkzNjcxNl5BMl5BanBnXkFtZTYwNDA4NjE3._V1_SX300.jpg"
-            alt="Burger"
-          />
-        </div>
-        <div className="carousel-item">
-          <img
-            src="http://ia.media-imdb.com/images/M/MV5BMTk2NTI1MTU4N15BMl5BanBnXkFtZTcwODg0OTY0Nw@@._V1_SX300.jpg"
-            alt="Burger"
-          />
-        </div>
-        <div className="carousel-item">
-          <img
-            src="http://ia.media-imdb.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_SX300.jpg"
-            alt="Burger"
-          />
-        </div>
-        <div className="carousel-item">
-          <img
-            src="http://ia.media-imdb.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwMzM4ODI3MjE@._V1_SX300.jpg"
-            alt="Burger"
-          />
-        </div>
-        <div className="carousel-item">
-          <img
-            src="http://ia.media-imdb.com/images/M/MV5BMjM5OTQ1MTY5Nl5BMl5BanBnXkFtZTgwMjM3NzMxODE@._V1_SX300.jpg"
-            alt="Burger"
-          />
-        </div>
-      </div>
-    </>
+    <div>
+      <Slider {...settings}>
+        {images.map((image) => (
+          <div
+            key={image.id}
+            className="p-2"
+            onClick={() => handleItemClick(image.id)}
+          >
+            <img
+              src={image.url}
+              alt={image.name}
+              className="w-full h-auto cursor-pointer"
+            />
+            <p className="text-center mt-2">{image.name}</p>
+          </div>
+        ))}
+      </Slider>
+      {selectedItemId && <p>Item Id: {selectedItemId}</p>}
+    </div>
   );
-}
+};
 
 export default Carousel;
