@@ -27,7 +27,6 @@ const FilmList = ({ films }) => {
             <p className="text-gray-600">Plot: {film.Plot}</p>
             <p className="text-gray-600">Language: {film.Language}</p>
             <p className="text-gray-600">Country: {film.Country}</p>
-            <p className="text-gray-600">Awards: {film.Awards}</p>
             <div className="flex justify-between items-center mt-4">
               <p className="text-2xl text-yellow-500">{film.imdbRating}</p>
               <p className="text-gray-600">{film.imdbVotes}</p>
