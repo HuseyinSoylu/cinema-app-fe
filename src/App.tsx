@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Layout } from "./Layout/Layout";
 import Hero from "./components/Hero/Hero";
 import Categories from "./components/Categories/Categories";
-import Slider from "./components/Home/Slider";
-import FilmMenu from "./components/Home/FilmMenu";
 import Carousel from "./components/Home/Carousel";
 function App() {
   const images = [
